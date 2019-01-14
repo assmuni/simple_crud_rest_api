@@ -4,14 +4,17 @@ const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
 
+'## SETUP EXPRESS APP'
+const app = express();
+
 '## CONNECT TO LOCAL MONGO'
 mongoose.connect('mongodb://localhost/portofolio', { useNewUrlParser: true });
 
 '## USE MONGOS PROMISE'
 mongoose.Promise = global.Promise;
 
-'## SETUP EXPRESS APP'
-const app = express();
+'#0 load static file'
+app.use(express.static('public'));
 
 '#1 (MIDDLEWARE) INITIAL BODY PARSER IN JSON'
 app.use(bodyParser.json());

@@ -6,7 +6,44 @@ const Ninja = require('../models/ninja');
 
 '## get list of ninjas from the database'
 router.get('/ninjas', (req, res, next) => {
-    res.send({type: 'GET'});
+    // res.send({type: 'GET'});
+    
+    // Ninja.find({}).then((ninjas) => {
+    //     res.send(ninjas);
+    // });
+
+    '## url parameters'
+    // Ninja.geoNear(
+    //     {type: 'point', coordinates: [parseFloat(req.query.lng), parseFloat(req.query.lat)]},
+    //     {maxDistance: 100000, spherical: true}
+    // ).then((data) => {
+    //     res.send(data);
+    // }).catch(next);
+
+    // Ninja.geoSearch(
+    //     {type: 'point'}, 
+    //     {near: [parseFloat(req.query.lng), parseFloat(req.query.lat)], maxDistance: 100000}
+    // ).then((data) => {
+    //     res.send(data);
+    // }).catch(next);
+    
+    // Ninja.geoSearch(
+        //     {type: 'point'}, 
+        //     {near: [parseFloat(req.query.lng), parseFloat(req.query.lat)], maxDistance: 100000},
+        //     (err, data) => {
+        //         res.send(data);
+        //     }
+        // )
+            
+            
+    Ninja.aggregate().near({
+        near: [parseFloat(req.query.lng), parseFloat(req.query.lat)],
+        maxDistance: 1,
+        spherical: true,
+        distanceField: "dist.calculated"
+    }).then((data) => {
+        res.send(data);
+    }).catch(next);
 });
 
 '## post a new ninjas to the database'
@@ -31,8 +68,7 @@ router.put('/ninjas/:id', (req, res, next) => {
             res.send(data);
         });
     }).catch(next);
-
-    // res.send({type: 'PUT'});
+    
 });
 
 '## delete ninja from database'
