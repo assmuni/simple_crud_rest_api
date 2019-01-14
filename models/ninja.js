@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-// create ninja Schema and model
+'## CREATE NINJA COLLECTION SCHEMA AND MODEL'
 const NinjaSchema = new Schema({
     name: {
         type: String,
