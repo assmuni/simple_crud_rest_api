@@ -36,7 +36,7 @@ app.use((err, req, res, next) => {
     //     res.send('hollaa');
     // });
     
-const portNumber = 3000;
+const portNumber = 4000;
 app.listen(process.env.port || portNumber, () => {
     console.log(`Is running cuy di localhost port ${portNumber}`);
 })

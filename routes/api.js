@@ -38,12 +38,15 @@ router.get('/ninjas', (req, res, next) => {
             
     Ninja.aggregate().near({
         near: [parseFloat(req.query.lng), parseFloat(req.query.lat)],
-        maxDistance: 1,
+        maxDistance: 100000,
         spherical: true,
         distanceField: "dist.calculated"
     }).then((data) => {
         res.send(data);
+        // console.log(data);
     }).catch(next);
+
+    // console.log(req.query.lng + req.query.lat);
 });
 
 '## post a new ninjas to the database'

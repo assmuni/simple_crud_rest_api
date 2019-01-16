@@ -81,7 +81,7 @@ span.false{
     background: #ff5252;
 }
 button{
-    float: right;
+    float: none;
     background: green;
     border: 0;
     padding: 5px 10px;
