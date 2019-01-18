@@ -13,29 +13,6 @@ router.get('/ninjas', (req, res, next) => {
     // });
 
     '## url parameters'
-    // Ninja.geoNear(
-    //     {type: 'point', coordinates: [parseFloat(req.query.lng), parseFloat(req.query.lat)]},
-    //     {maxDistance: 100000, spherical: true}
-    // ).then((data) => {
-    //     res.send(data);
-    // }).catch(next);
-
-    // Ninja.geoSearch(
-    //     {type: 'point'}, 
-    //     {near: [parseFloat(req.query.lng), parseFloat(req.query.lat)], maxDistance: 100000}
-    // ).then((data) => {
-    //     res.send(data);
-    // }).catch(next);
-    
-    // Ninja.geoSearch(
-        //     {type: 'point'}, 
-        //     {near: [parseFloat(req.query.lng), parseFloat(req.query.lat)], maxDistance: 100000},
-        //     (err, data) => {
-        //         res.send(data);
-        //     }
-        // )
-            
-            
     Ninja.aggregate().near({
         near: [parseFloat(req.query.lng), parseFloat(req.query.lat)],
         maxDistance: 100000,
@@ -43,16 +20,11 @@ router.get('/ninjas', (req, res, next) => {
         distanceField: "dist.calculated"
     }).then((data) => {
         res.send(data);
-        // console.log(data);
     }).catch(next);
-
-    // console.log(req.query.lng + req.query.lat);
 });
 
 '## post a new ninjas to the database'
 router.post('/ninjas', (req, res, next) => {
-    // console.log(req.body);
-    // res.send(req.body);
 
     // var ninja = new Ninja(req.body);
     // ninja.save();

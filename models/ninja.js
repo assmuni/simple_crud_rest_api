@@ -2,11 +2,6 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-// "geometry": {
-//     "type": "Point",
-//         "coordinates": [125.6, 10.1]
-// },
-
 const geojsonSchema = new Schema({
     type: {
         type: String,

@@ -28,10 +28,6 @@ app.use((err, req, res, next) => {
     res.status(422).send({error: err.message});
 });
 
-
-
-
-
 // app.get('/',(req, res) => {
     //     res.send('hollaa');
     // });
